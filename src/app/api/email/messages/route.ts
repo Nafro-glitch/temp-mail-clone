@@ -27,7 +27,7 @@ function createWelcomeMessage(): Message {
 // واجهة برمجة التطبيقات للحصول على الرسائل
 export async function GET() {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const email = cookieStore.get('temp_email')?.value;
     
     if (!email) {
@@ -69,7 +69,7 @@ export async function GET() {
 // واجهة برمجة التطبيقات لإضافة رسالة جديدة (محاكاة استلام رسالة)
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const email = cookieStore.get('temp_email')?.value;
     
     if (!email) {
@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
 // واجهة برمجة التطبيقات لتحديث حالة قراءة الرسالة
 export async function PUT(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const email = cookieStore.get('temp_email')?.value;
     
     if (!email) {

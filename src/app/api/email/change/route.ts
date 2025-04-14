@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     
     // نطاق البريد الإلكتروني المخصص
     const EMAIL_DOMAIN = 'mytempemail.com';

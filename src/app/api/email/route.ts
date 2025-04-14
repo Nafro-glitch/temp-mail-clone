@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
     }
     
     // إنشاء كعكة لتخزين البريد الإلكتروني
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     cookieStore.set('temp_email', email, {
       maxAge: 60 * 45, // 45 دقيقة
       path: '/',
@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
 // واجهة برمجة التطبيقات للحصول على البريد الإلكتروني الحالي
 export async function GET() {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const email = cookieStore.get('temp_email')?.value;
     const expiryTime = cookieStore.get('email_expiry')?.value;
     
@@ -127,7 +127,7 @@ export async function GET() {
 // واجهة برمجة التطبيقات لحذف البريد الإلكتروني الحالي
 export async function DELETE() {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     
     // حذف جميع الكعكات المتعلقة بالبريد الإلكتروني
     cookieStore.delete('temp_email');

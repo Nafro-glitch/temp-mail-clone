@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 // واجهة برمجة التطبيقات لتجديد صلاحية البريد الإلكتروني المؤقت
 export async function POST() {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const email = cookieStore.get('temp_email')?.value;
     
     if (!email) {
